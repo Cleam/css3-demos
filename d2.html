@@ -57,7 +57,7 @@
     .circle2.active {
       border: 2px solid #9494b6;
       border-top-color: #ffffff;
-      -webkit-animation: circle 1s infinite linear;
+      -webkit-animation: circle2 1s infinite linear;
       animation: circle2 1s infinite linear
     }
 
@@ -74,6 +74,46 @@
         transform: rotate(360deg);
       }
     }
+
+    .loading {
+      position: relative;
+      width: 100%;
+      text-align: center;
+      font-size: 14px;
+      color: #9494b6;
+    }
+
+    .loading::after {
+      content: '';
+      position: absolute;
+      /* right: -25px; */
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      border: 2px solid #ffffff;
+      border-top-color: #9494b6;
+    }
+
+    .loading.active::after {
+      border: 2px solid #9494b6;
+      border-top-color: #ffffff;
+      -webkit-animation: loading-circle 0.5s infinite linear;
+      animation: loading-circle 0.5s infinite linear
+    }
+
+    @-webkit-keyframes loading-circle {
+      100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes loading-circle {
+      100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+      }
+    }
   </style>
 </head>
 
@@ -81,6 +121,7 @@
   <div class="container">
     <div id="circle" class="circle"></div>
     <div id="circle2" class="circle2"></div>
+    <p id="loading" class="loading">正在努力加载&nbsp;</p>
   </div>
   <button id="btn">点击看效果</button>
 
@@ -88,9 +129,11 @@
     var btn = document.getElementById('btn')
     var circle = document.getElementById('circle')
     var circle2 = document.getElementById('circle2')
+    var loading = document.getElementById('loading')
     btn.addEventListener('click', function () {
       addClass(circle, 'active');
       addClass(circle2, 'active');
+      addClass(loading, 'active');
     })
 
     function addClass(target, cls) {
