@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>demo1</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      position: relative;
+      width: 600px;
+      height: 30px;
+      /* margin: 0 auto; */
+      border: 1px solid #e5e5e5;
+    }
+
+    .refresh {
+      width: 0px;
+      height: 100%;
+      -webkit-transition: all .5s;
+      transition: all .5s;
+      background: rgba(255, 91, 95, .1);
+      /* background: rgba(28, 131, 248, 0.1); */
+      position: absolute;
+      top: 0;
+      left: 50%;
+      -webkit-transform: translate(-50%);
+      -ms-transform: translate(-50%);
+      transform: translate(-50%)
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div id="refresh" class="refresh"></div>
+  </div>
+  <button id="btn">点击看效果</button>
+
+  <script>
+    var btn = document.getElementById('btn')
+    var refresh = document.getElementById('refresh')
+    btn.addEventListener('click', function () {
+      refresh.style = 'transition: all 500ms ease 0s; width: 100%;'
+      setTimeout(function () {
+        refresh.style = '';
+      }, 500);
+    })
+  </script>
+</body>
+
+</html>
